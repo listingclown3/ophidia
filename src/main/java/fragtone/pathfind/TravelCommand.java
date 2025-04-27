@@ -46,7 +46,7 @@ public class TravelCommand extends CommandBase {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Stopping at [" + currentPos.getX() + ", " + currentPos.getY() + ", " + currentPos.getZ() + "]"));
                 wasInterrupted = true;
             } else if (args[0].equalsIgnoreCase("help")) {
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Usage: /travel <x>||<stop> <y> <z>"));
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Usage: /travel <x>||<stop>||<continue> <y> <z>"));
             } else if (args[0].equalsIgnoreCase("continue")) {
                 if (Walker.getInstance().isActive()) {
                     Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Already on a path to [" + endPos.getX() + ", " + endPos.getY() + ", " + endPos.getZ() + "]"));
@@ -58,7 +58,7 @@ public class TravelCommand extends CommandBase {
             }
 
         } else {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Usage: /travel <x>||<stop> <y> <z>"));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("§5[§dFragtone§d]§5§7 Usage: /travel <x>||<stop>||<continue> <y> <z>"));
         }
     }
 }
