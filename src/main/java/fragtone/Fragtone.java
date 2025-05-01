@@ -2,6 +2,8 @@ package fragtone;
 
 import fragtone.websockets.ActionHandler;
 import net.minecraft.command.ICommand;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.BlockPos;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +17,8 @@ import fragtone.pathfind.main.walk.Walker;
 import fragtone.websockets.WebSocketManager;
 import fragtone.FragtoneConfig;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
 
 @Mod(modid = Fragtone.MODID, version = Fragtone.VERSION)
@@ -50,6 +54,13 @@ public class Fragtone
                 WebSocketManager.getInstance() // Register WebSocket manager for events
         );
 
+        try {
+            Class.forName("org.java-websocket:Java-WebSocket:1.5.3");
+            System.out.println("WebSocket library loaded successfully");
+        } catch (ClassNotFoundException e) {
+            System.err.println("WebSocket library missing!");
+        }
+
         // Log startup info
         System.out.println("[Fragtone] WebSocket functionality initialized.");
         System.out.println("[Fragtone] WebSocket server URL: " + FragtoneConfig.getWebsocketUrl());
@@ -58,6 +69,7 @@ public class Fragtone
 
     private void registerCommands(ICommand... commands) {
         for (ICommand command : commands) {
+            // Use the instance reference required for 1.8.9
             ClientCommandHandler.instance.registerCommand(command);
             System.out.println("[Fragtone] Registered command: " + command.getCommandName());
         }
@@ -72,4 +84,10 @@ public class Fragtone
             }
         });
     }
+
+    // Required permission level (0 = all players)e
+    public int getRequiredPermissionLevel() {
+        return 0;
+    }
+
 }
