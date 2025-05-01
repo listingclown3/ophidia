@@ -6,14 +6,10 @@ pathfinding mod based off from [roger1337](https://github.com/roger1337)
 - called it fragtone for the funnies (based off Baritone)
 
 # what does this do?
-- pathfinds up to 10,000 considered blocks (medium-ish distance)
-- smooth, mostly non-detectable movement (tried on anticheat-test.com & alpha.hypixel.net)
-- functions great for varying levels of speed, especially in hypixel skyblock
+- built on top of ophidia 
+- websocket interface
+- connects to ForgeTrigger websocket server
 
-# todo
-- add long distance, stable pathfinding
-- add javascript/script file integration
-- add 1.20 integration
-- integrate into notenoughorchestration (custom automated dungeons frag bot orchestrator)
-
+todo:
+connect with chatteiggers illegalmap
 
